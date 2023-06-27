@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Deepti Pandit/IdeaProjects/Metis-UI-Test">
+        <classes>
+            <class name="All_Types.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="All_Types.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="All_Types.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Date_Normalization.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Date_Normalization.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="Date_Normalization.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Duplicates.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Duplicates.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="Duplicates.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Empty_Dataset.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Empty_Dataset.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="Empty_Dataset.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Illegal_Enrichment.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Illegal_Enrichment.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="Illegal_Enrichment.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Large_Dataset.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Large_Dataset.Edge_Test">
+                <methods>
+                    <include name="EdgeTest"/>
+                </methods>
+            </class>
+            <class name="Large_Dataset.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

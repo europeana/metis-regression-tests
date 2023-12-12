@@ -19,7 +19,7 @@ public class Firefox_Test {
 
     @Test
     public void FirefoxTest() throws InterruptedException, IOException {
-        System.setProperty("webdriver.firefox.driver", "C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox_Regression_Acceptance_1\\Resources\\geckodriver.exe");
+        String driverPath = System.getProperty("driverPath");
         WebDriver driver = new FirefoxDriver();
         driver.get(getUrl());
         // maximize the browser
@@ -29,7 +29,7 @@ public class Firefox_Test {
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
         driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/span/button/span")).click();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]")).click();
 
@@ -40,7 +40,7 @@ public class Firefox_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
         Thread.sleep(3000);
-        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Large_Dataset_Firefox_MET5310_test04");
+        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Large_Dataset_Firefox_Regression_MET5579");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -54,7 +54,7 @@ public class Firefox_Test {
 
         //Create the dataset
 
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/span")).click();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button")).click();
         Thread.sleep(2000);
         WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
         Dataset.click();
@@ -76,9 +76,9 @@ public class Firefox_Test {
         driver.findElement(By.cssSelector("#url")).sendKeys("https://metis-repository-rest.test.eanadev.org/repository/zip/Deepti_1004_test.zip");
 
         //Save and Run the workflow
-        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > div.tab-content > app-workflow > div > form > div > div > div > app-loading-button > span > button")).click();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[3]/app-workflow/div/form/div/div/div/app-loading-button/button")).click();
         Thread.sleep(2000);
-        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > div.tab-content > app-workflow > div > form > div > div > div > app-loading-button > span > button")).click();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[3]/app-workflow/div/form/div/div/div/app-loading-button/button/span")).click();
 
         // Display the dataset id and number of published items//
         WebElement dataset_name = driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[1]/div[1]/app-generalinfo/div/div[1]"));

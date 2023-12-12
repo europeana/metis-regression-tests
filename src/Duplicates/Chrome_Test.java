@@ -34,7 +34,8 @@ public class Chrome_Test {
 //    }
     @Test
     public void testMetis1() throws InterruptedException, IOException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox_Regression_Acceptance_1\\Resources\\chromedriver.exe");
+        //String driverPath = System.getProperty("driverPath2");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Metis-UI-Test\\Resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
@@ -45,7 +46,7 @@ public class Chrome_Test {
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
         driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/span/button/span")).click();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/button")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]")).click();
 
@@ -55,7 +56,7 @@ public class Chrome_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_All_types_chrome_0101");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicates_chrome_Regression");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -66,9 +67,10 @@ public class Chrome_Test {
             dropdown.findElement(By.xpath("//option[. = 'Gaelic (Scottish)']")).click();
         }
         Thread.sleep(2000);
-//Create the dataset
 
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/span")).click();
+        //Create the dataset
+
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
         WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
         Dataset.click();
@@ -99,7 +101,8 @@ public class Chrome_Test {
         action.sendKeys(Keys.ENTER).build().perform();
         Thread.sleep(2000);
 
-        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > div.tab-content > app-workflow > div > form > div > div > div > app-loading-button > span > button")).click();
+        //Run the workflow
+        driver.findElement(By.cssSelector(".submit")).click();
 
         // Display the dataset id and number of published items//
         WebElement dataset_name = driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[1]/div[1]/app-generalinfo/div/div[1]"));

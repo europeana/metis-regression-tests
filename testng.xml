@@ -3,17 +3,17 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Deepti Pandit/IdeaProjects/Metis-UI-Test">
         <classes>
-            <class name="All_Types.Chrome_Test">
+            <class name="All_Types_Http_Upload.Chrome_Test">
                 <methods>
                     <include name="testMetis1"/>
                 </methods>
             </class>
-            <class name="All_Types.Edge_Test">
+            <class name="All_Types_Http_Upload.Edge_Test">
                 <methods>
                     <include name="EdgeTest"/>
                 </methods>
             </class>
-            <class name="All_Types.Firefox_Test">
+            <class name="All_Types_Http_Upload.Firefox_Test">
                 <methods>
                     <include name="FirefoxTest"/>
                 </methods>
@@ -29,6 +29,16 @@
                 </methods>
             </class>
             <class name="Date_Normalization.Firefox_Test">
+                <methods>
+                    <include name="FirefoxTest"/>
+                </methods>
+            </class>
+            <class name="Depublish.Chrome_Test">
+                <methods>
+                    <include name="testMetis1"/>
+                </methods>
+            </class>
+            <class name="Depublish.Firefox_Test">
                 <methods>
                     <include name="FirefoxTest"/>
                 </methods>

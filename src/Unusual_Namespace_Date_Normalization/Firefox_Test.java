@@ -38,7 +38,7 @@ public class Firefox_Test {
         driver.switchTo().window(child_iterator);
         Thread.sleep(3000);
 
-        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Unusual_Namespace_Firefox_Regression_MET5579");
+        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Unusual_Namespace_Firefox_Regression_MET6103");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));

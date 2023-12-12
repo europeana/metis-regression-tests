@@ -49,7 +49,7 @@ public class Edge_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
 
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicate_edge_MET_5553_3");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicate_edge_MET_5966");
 
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
 

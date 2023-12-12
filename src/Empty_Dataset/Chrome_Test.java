@@ -11,6 +11,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,31 +35,27 @@ public class Chrome_Test {
 //        driver.quit();
 //    }
     @Test
-    public void testMetis1() throws InterruptedException, IOException {
-        //String driverPath = System.getProperty("driverPath2");
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Metis-UI-Test\\Resources\\chromedriver.exe");
+    public void testMetis1() throws InterruptedException, IOException, AWTException {
+
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox-Regression\\Resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
         driver.get(getUrl());
         driver.manage().window().maximize();
         Thread.sleep(5000);
-        driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/a")).click();
-        driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
-        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/button")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]")).click();
 
-        Set<String> windowhandles = driver.getWindowHandles();
-        System.out.println(windowhandles);
-        Iterator<String> iterator = windowhandles.iterator();
-        String parent_iterator = iterator.next();
-        String child_iterator = iterator.next();
-        driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Empty_Dataset_chrome_Regression");
-        driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
+        //Accept cookies
+        driver.findElement(By.xpath("/html/body/sb-root/div[3]/div[2]/sb-cookie-consent/div/div/div/button[3]")).click();
+
+        //Get Started
+        driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/sb-home/div/a")).click();
+
+        //Create new Dataset
+        driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/ul/li/label/a")).click();
+
+        //Upload a Dataset
+        driver.findElement(By.id("name")).sendKeys("Automation_Empty_Dataset_Chrome_Regression_MET5984");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
             dropdown.findElement(By.xpath("//option[. = 'Georgia']")).click();
@@ -67,56 +64,33 @@ public class Chrome_Test {
             WebElement dropdown = driver.findElement(By.id("language"));
             dropdown.findElement(By.xpath("//option[. = 'Gaelic (Scottish)']")).click();
         }
-        Thread.sleep(2000);
 
-        //Create the dataset
+        //uploading the zip file
+        WebElement chooseFile = driver.findElement(By.cssSelector("body > sb-root > div.pusher > sb-sandbox-navigation > main > div.sandbox-navigation-content > sb-upload > form > div.form-group.protocol-wrapper > lib-protocol-field-set > div:nth-child(2) > lib-file-upload > label > input"));
+        chooseFile.sendKeys("C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox-Regression\\Records\\all_record_types_empty.zip");
 
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
-        Thread.sleep(2000);
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
+        //Submit the request
+        WebElement submit_button = driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/sb-upload/form/button"));
+        submit_button.submit();
+        Thread.sleep(40000);
 
-        //Tab to workflow
-        Actions action = new Actions(driver);
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.ENTER).build().perform();
+        ///Verifying the number of published records
+        WebElement records_count = driver.findElement(By.cssSelector("span.step-progress:nth-child(30)"));
+        System.out.println("Number of Published records are : " + records_count.getText());
 
-        //Select all workflows
-        driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
-        Thread.sleep(2000);
+        //Verifying the dataset name
+        WebElement dataset_info = driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/sb-progress-tracker/sb-dataset-info/ul/li[1]/ul/li[1]/h2/a/span"));
+        System.out.println("Date and Time info : " + dataset_info.getText());
 
-        //Select http upload
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.SPACE).build().perform();
-        action.sendKeys(Keys.TAB).build().perform();
+        //Verifying the date and time dataset was created
+        WebElement date_info = driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/sb-progress-tracker/sb-dataset-info/ul/li[1]/ul/li[3]/span[2]/span"));
+        System.out.println("Dataset info : " + date_info.getText());
 
-        //Upload http file
-        driver.findElement(By.cssSelector("#url")).sendKeys("https://metis-repository-rest.test.eanadev.org/repository/zip/deepti_empty_test.zip");
-        Thread.sleep(2000);
+        //Fetching the dataset id
+        WebElement dataset_id = driver.findElement(By.xpath("/html/body/sb-root/div[3]/sb-sandbox-navigation/main/div[2]/sb-progress-tracker/sb-dataset-info/ul/li[2]/ul/li[1]/h2"));
+        System.out.println("Dataset Id is : " + dataset_id.getText());
 
-        //Save and Run the workflow
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.TAB).build().perform();
-        action.sendKeys(Keys.ENTER).build().perform();
-        Thread.sleep(2000);
-
-        //Run the workflow
-        driver.findElement(By.cssSelector(".submit")).click();
-
-        // Display the dataset id and number of published items//
-        WebElement dataset_name = driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[1]/div[1]/app-generalinfo/div/div[1]"));
-        WebElement no_of_published_records = driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[1]/div[1]/app-generalinfo/div/dl/dd[2]"));
-        driver.navigate().back();
-        WebElement dataset_Id = driver.findElement(By.xpath("/html/body/app-root/div/div/app-dataset/div/div/div[3]/app-datasetform/div/form/div/div[1]/span"));
-
-        System.out.println("The Dataset Id is :" + dataset_Id.getText());
-        System.out.println("The Dataset name is :" + dataset_name.getText());
-        Thread.sleep(1000*60*5);
-        System.out.println("Number of items published : " + no_of_published_records.getText());
-
-        // Close the browser
-        driver.close();
+        //Close the browser
+        driver.quit();
     }
 }

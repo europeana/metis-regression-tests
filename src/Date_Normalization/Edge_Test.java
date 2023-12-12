@@ -50,7 +50,7 @@ public class Edge_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
 
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Date_Normalization_edge_2");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Date_Normalization_edge_Release_V9");
 
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
 

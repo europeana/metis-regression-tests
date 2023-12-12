@@ -58,7 +58,7 @@ public class Chrome_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Unusual_Namespace_Chrome_Test_MET5553");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Unusual_Namespace_Chrome_Test_MET5984");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         Thread.sleep(2000);
         {

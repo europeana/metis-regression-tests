@@ -33,7 +33,7 @@ public class Edge_Test {
         Thread.sleep(5000);
 
 
-        //Sign in
+//Sign in
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/a")).click();
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
@@ -49,29 +49,22 @@ public class Edge_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
 
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicate_edge_MET_5553_3");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Date_Duplicate_MET6320");
 
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
-
-        // Selecting a country from drop down
-        WebElement country_drop_down = driver.findElement(By.id("country"));
-        Select select = new Select(country_drop_down);
-        select.selectByVisibleText("Europe");
-        select.selectByIndex(18);
-
-        //Selecting a language from language drop down
-        WebElement language_drop_down = driver.findElement(By.id("language"));
-        Select select1 = new Select(language_drop_down);
-        select1.selectByVisibleText("Croatian (hrvatski jezik)");
-        select1.selectByIndex(11);
+        {
+            WebElement dropdown = driver.findElement(By.id("country"));
+            dropdown.findElement(By.xpath("//option[. = 'Georgia']")).click();
+        }
+        {
+            WebElement dropdown = driver.findElement(By.id("language"));
+            dropdown.findElement(By.xpath("//option[. = 'Gaelic (Scottish)']")).click();
+        }
         Thread.sleep(2000);
 
         //Create the dataset
-
         driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
 
         //Tab to workflow
         Actions action = new Actions(driver);

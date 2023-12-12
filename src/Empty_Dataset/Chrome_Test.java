@@ -35,8 +35,7 @@ public class Chrome_Test {
 //    }
     @Test
     public void testMetis1() throws InterruptedException, IOException {
-        //String driverPath = System.getProperty("driverPath2");
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Metis-UI-Test\\Resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox-Regression\\Resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
@@ -57,7 +56,7 @@ public class Chrome_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Empty_Dataset_chrome_Regression");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Empty_Dataset_chrome_Regression_MET5409");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -82,7 +81,8 @@ public class Chrome_Test {
         action.sendKeys(Keys.ENTER).build().perform();
 
         //Select all workflows
-        driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
+        action.sendKeys(Keys.SPACE).build().perform();
+        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > app-workflow-header > div > div.full-view > span.shortcuts > a:nth-child(1)")).click();
         Thread.sleep(2000);
 
         //Select http upload

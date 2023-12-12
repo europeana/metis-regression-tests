@@ -45,7 +45,7 @@ public class Edge_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
 
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_All_Edge_Test_MET5242");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_All_Edge_Test_MET6058");
 
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
 
@@ -62,17 +62,16 @@ public class Edge_Test {
 
         //Create the dataset
 
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button")).submit();
+        driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
-
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
-
+        //driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
+        //Thread.sleep(2000);
 
         //Tab to workflow
         Actions action = new Actions(driver);
         action.sendKeys(Keys.TAB).build().perform();
         action.sendKeys(Keys.ENTER).build().perform();
+        Thread.sleep(3000);
 
         //Select all workflows
         driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();

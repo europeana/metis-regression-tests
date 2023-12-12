@@ -50,36 +50,33 @@ public class Edge_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
 
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Date_Normalization_edge_2");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Date_Normalization_edge_MET6320_1");
 
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
-
-        // Selecting a country from drop down
-        WebElement country_drop_down = driver.findElement(By.id("country"));
-        Select select = new Select(country_drop_down);
-        select.selectByVisibleText("Europe");
-        select.selectByIndex(18);
-
-        //Selecting a language from language drop down
-        WebElement language_drop_down = driver.findElement(By.id("language"));
-        Select select1 = new Select(language_drop_down);
-        select1.selectByVisibleText("Croatian (hrvatski jezik)");
-        select1.selectByIndex(11);
+        {
+            WebElement dropdown = driver.findElement(By.id("country"));
+            dropdown.findElement(By.xpath("//option[. = 'Georgia']")).click();
+        }
+        {
+            WebElement dropdown = driver.findElement(By.id("language"));
+            dropdown.findElement(By.xpath("//option[. = 'Gaelic (Scottish)']")).click();
+        }
+        Thread.sleep(2000);
 
         //Create the dataset
-
         driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
 
         //Tab to workflow
         Actions action = new Actions(driver);
         action.sendKeys(Keys.TAB).build().perform();
         action.sendKeys(Keys.ENTER).build().perform();
+        Thread.sleep(3000);
 
         //Select all workflows
-        driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
+        action.sendKeys(Keys.SPACE).build().perform();
+        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > app-workflow-header > div > div.full-view > span.shortcuts > a:nth-child(1)")).click();
+
         Thread.sleep(2000);
 
         //Select http upload
@@ -89,10 +86,11 @@ public class Edge_Test {
         action.sendKeys(Keys.TAB).build().perform();
 
         //Upload http file
-        driver.findElement(By.cssSelector("#url")).sendKeys("https://metis-repository-rest.test.eanadev.org/repository/zip/Deepti_date_normalization.zip");
+        driver.findElement(By.cssSelector("#url")).sendKeys("https://metis-repository-rest.test.eanadev.org/repository/zip/deepti_all_types.zip");
         Thread.sleep(2000);
 
-        //Save and Run the workflow
+
+        //Save the workflow
         action.sendKeys(Keys.TAB).build().perform();
         action.sendKeys(Keys.TAB).build().perform();
         action.sendKeys(Keys.TAB).build().perform();

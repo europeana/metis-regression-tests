@@ -29,7 +29,7 @@ public class Chrome_Test {
 
     @Test
     public void testMetis1() throws InterruptedException, IOException {
-        String driverPath = System.getProperty("driverPath2");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox-Regression\\Resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);

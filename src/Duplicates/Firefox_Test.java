@@ -29,8 +29,8 @@ public class Firefox_Test {
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
         driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
         driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]/span")).click();
 
         Set<String> windowhandles = driver.getWindowHandles();
         System.out.println(windowhandles);
@@ -39,7 +39,7 @@ public class Firefox_Test {
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
         Thread.sleep(3000);
-        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Duplicates_Firefox_regression_MET5579");
+        driver.findElement(By.id("dataset-name")).sendKeys("Automation_Duplicates_Firefox_regression_MET6320");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -90,7 +90,7 @@ public class Firefox_Test {
         System.out.println("Number of items published : " + no_of_published_records.getText());
 
         // Close the browser
-        driver.close();
+        driver.quit();
     }
 }
 

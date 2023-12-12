@@ -83,7 +83,8 @@ public class Chrome_Test {
         action.sendKeys(Keys.ENTER).build().perform();
 
         //Select all workflows
-        driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
+        action.sendKeys(Keys.SPACE).build().perform();
+        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > app-workflow-header > div > div.full-view > span.shortcuts > a:nth-child(1)")).click();
         Thread.sleep(2000);
 
         //Select http upload

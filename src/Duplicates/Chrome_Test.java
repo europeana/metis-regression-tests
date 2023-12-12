@@ -34,8 +34,7 @@ public class Chrome_Test {
 //    }
     @Test
     public void testMetis1() throws InterruptedException, IOException {
-        //String driverPath = System.getProperty("driverPath2");
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Metis-UI-Test\\Resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Deepti Pandit\\IdeaProjects\\Sandbox-Regression\\Resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
@@ -56,7 +55,7 @@ public class Chrome_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicates_chrome_Regression");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_Duplicates_chrome_Regression_MET6103");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -72,8 +71,6 @@ public class Chrome_Test {
 
         driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
 
         //Tab to workflow
         Actions action = new Actions(driver);
@@ -116,6 +113,6 @@ public class Chrome_Test {
         System.out.println("Number of items published : " + no_of_published_records.getText());
 
         // Close the browser
-        driver.close();
+        driver.quit();
     }
 }

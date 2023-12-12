@@ -33,16 +33,15 @@ public class Firefox_Test {
         driver.get(getUrl());
         // maximize the browser
         driver.manage().window().maximize();
-        Thread.sleep(5000);
 
         //Sign In
-        driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/a")).click();
-        driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
-        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
-        driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/button")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]")).click();
+    driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/a")).click();
+      driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
+    driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
+     driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(getPassword());
+    driver.findElement(By.xpath("/html/body/app-root/div/div/app-login/div/form/div[2]/div/app-loading-button/button")).click();
+       Thread.sleep(3000);
+        driver.findElement(By.xpath("/html/body/app-root/div/div/ng-component/div/div[2]/div/app-dashboardactions/div/span/a[1]/span")).click();
 
         Set<String> windowhandles = driver.getWindowHandles();
         System.out.println(windowhandles);
@@ -52,8 +51,9 @@ public class Firefox_Test {
         driver.switchTo().window(child_iterator);
         Thread.sleep(3000);
 
-        driver.findElement(By.id("dataset-name")).sendKeys("Automation_OAI_Upload_Firefox_Test_Regression_MET5579");
-        driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
+        driver.findElement(By.id("dataset-name")).sendKeys("Automation_OAI_Upload_Firefox_met6320");
+        
+      driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         Thread.sleep(2000);
         {
             WebElement dropdown = driver.findElement(By.id("country"));
@@ -77,6 +77,7 @@ public class Firefox_Test {
         action.sendKeys(Keys.ENTER).build().perform();
 
         //Select all workflows
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
         Thread.sleep(2000);
 
@@ -118,6 +119,6 @@ public class Firefox_Test {
         System.out.println("Number of items published : " + no_of_published_records.getText());
 
         // Close the browser
-        driver.close();
+        driver.quit();
     }
 }

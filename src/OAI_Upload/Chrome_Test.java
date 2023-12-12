@@ -58,7 +58,7 @@ public class Chrome_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_OAI_Upload_Regression");
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_OAI_Upload_Regression_MET6200");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         Thread.sleep(2000);
         {
@@ -83,7 +83,8 @@ public class Chrome_Test {
         action.sendKeys(Keys.ENTER).build().perform();
 
         //Select all workflows
-        driver.findElement(By.xpath("//app-workflow-header/div/div/span/a")).click();
+        action.sendKeys(Keys.SPACE).build().perform();
+        driver.findElement(By.cssSelector("body > app-root > div > div > app-dataset > div > div > app-workflow-header > div > div.full-view > span.shortcuts > a:nth-child(1)")).click();
         Thread.sleep(2000);
 
         //Select OAI upload
@@ -123,7 +124,7 @@ public class Chrome_Test {
         Thread.sleep(1000*60*5);
         System.out.println("Number of items published : " + no_of_published_records.getText());
 
-        // Close the browser
-        driver.close();
+//        // Close the browser
+//        driver.close();
     }
 }

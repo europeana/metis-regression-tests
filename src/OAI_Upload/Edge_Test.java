@@ -38,7 +38,7 @@ public class Edge_Test {
         driver.manage().window().maximize();
         Thread.sleep(5000);
 
-        //Sign In
+        //Sign in
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/a")).click();
         driver.findElement(By.xpath("/html/body/app-root/app-header/div/header/div/div[2]/ul/li/ul/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(getUsername());
@@ -53,9 +53,10 @@ public class Edge_Test {
         String parent_iterator = iterator.next();
         String child_iterator = iterator.next();
         driver.switchTo().window(child_iterator);
-        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_OAI_Upload_Edge_smoke_Test");
+
+        driver.findElement(By.xpath("//*[@id=\"dataset-name\"]")).sendKeys("Automation_OAI_Upload_edge_MET6320_1");
+
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
-        Thread.sleep(2000);
         {
             WebElement dropdown = driver.findElement(By.id("country"));
             dropdown.findElement(By.xpath("//option[. = 'Georgia']")).click();
@@ -69,8 +70,6 @@ public class Edge_Test {
         //Create the dataset
         driver.findElement(By.xpath("/html/body/app-root/div/div/app-newdataset/div/div[2]/app-datasetform/div/form/div/div[12]/app-loading-button/button/span")).click();
         Thread.sleep(2000);
-        WebElement Dataset = driver.findElement(By.cssSelector(".active > a:nth-child(1)"));
-        Dataset.click();
 
         //Tab to workflow
         Actions action = new Actions(driver);

@@ -40,7 +40,7 @@ public class Firefox_Test {
         driver.switchTo().window(child_iterator);
         Thread.sleep(3000);
 
-        driver.findElement(By.id("dataset-name")).sendKeys("Automation_All_types_Firefox_depublish_MET5398_b");
+        driver.findElement(By.id("dataset-name")).sendKeys("Automation_All_types_Firefox_depublish_MET5654");
         driver.findElement(By.xpath("//*[@id=\"provider\"]")).sendKeys("Automation");
         {
             WebElement dropdown = driver.findElement(By.id("country"));
